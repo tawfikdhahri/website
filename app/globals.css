@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-primary: #0a2540;
+  --color-secondary: #635bff;
+  --color-accent: #00d4ff;
+  --color-text: #424770;
+  --color-background: #f6f9fc;
+  --color-border: #e3e8ee;
+  --color-success: #32d583;
+  --color-icon-green: rgb(25 135 84);
+  --color-icon-red: rgb(220 53 69);
+  --color-icon-cyan: rgb(13 202 240);
+  --color-hero-start: #0a2540;
+  --color-hero-end: #635bff;
+  --color-hero-text: #f8fafc;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-primary: #f8fafc;
+  --color-secondary: #c7c3ff;
+  --color-accent: #38bdf8;
+  --color-text: #94a3b8;
+  --color-background: #0f172a;
+  --color-border: #1e293b;
+  --color-success: #22c55e;
+  --color-icon-green: rgb(52 211 153);
+  --color-icon-red: rgb(248 113 113);
+  --color-icon-cyan: rgb(34 211 238);
+  --color-hero-start: #0b1220;
+  --color-hero-end: #1f2a4a;
+  --color-hero-text: #f8fafc;
+}
+
+.icon-green {
+  color: var(--color-icon-green);
+}
+
+.icon-red {
+  color: var(--color-icon-red);
+}
+
+.icon-cyan {
+  color: var(--color-icon-cyan);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-primaryDark antialiased;
+}
+
+section {
+  @apply scroll-mt-24;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal[data-reveal-direction="left"] {
+  transform: translate3d(-12px, 0, 0);
+}
+
+.reveal[data-reveal-direction="right"] {
+  transform: translate3d(12px, 0, 0);
+}
+
+.reveal[data-reveal-direction="none"] {
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

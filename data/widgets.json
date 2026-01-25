@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "product-widget",
+    "title": "Product Widget",
+    "description": "Showcase a single product with live availability and a fast booking flow embedded directly on partner websites.",
+    "image": "/projects/product-widget.png",
+    "element": "product-details-widget",
+    "widgetId": "b6d23e4a-7d7c-4de4-8b08-153a1b4afed5",
+    "scriptSrc": "https://widgets.dev.regiondo.net/product/v1/product-widget.min.js",
+    "tags": ["Web Components", "Booking", "Regiondo"],
+    "techStack": ["React", "TypeScript", "Web Components", "Shadow DOM"],
+    "layout": "full"
+  },
+  {
+    "slug": "catalog-widget",
+    "title": "Catalog Widget",
+    "description": "Embed a curated product catalog with filters, pricing, and availability to drive conversions from content pages.",
+    "image": "/projects/project-placeholder.svg",
+    "element": "product-catalog-widget",
+    "widgetId": "f2502ab7-39a6-4dcd-ad72-1d7688e645c6",
+    "scriptSrc": "https://widgets.dev.regiondo.net/catalog/v1/catalog-widget.min.js",
+    "tags": ["Catalog", "Web Components", "Regiondo"],
+    "techStack": ["React", "TypeScript", "Web Components", "Shadow DOM"],
+    "layout": "full"
+  },
+  {
+    "slug": "booking-widget",
+    "title": "Booking Widget",
+    "description": "A full booking checkout widget with pricing, cart, and payment steps for seamless partner integrations.",
+    "image": "/projects/pos-widget.jpeg",
+    "element": "booking-widget",
+    "widgetId": "6872def5-4916-4fa5-83f1-e079800798e0",
+    "scriptSrc": "https://widgets.dev.regiondo.net/booking/v1/booking-widget.min.js",
+    "tags": ["Checkout", "Web Components", "Regiondo"],
+    "techStack": ["React", "TypeScript", "Web Components", "Shadow DOM"]
+  }
+]
