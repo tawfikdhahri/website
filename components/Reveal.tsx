@@ -2,11 +2,12 @@
 
 import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react";
 
-type RevealProps = React.HTMLAttributes<HTMLElement> & {
-  as?: keyof JSX.IntrinsicElements;
-  delayMs?: number;
-  direction?: "up" | "left" | "right" | "none";
-};
+type RevealProps<C extends keyof JSX.IntrinsicElements> =
+  React.ComponentPropsWithoutRef<C> & {
+    as?: C;
+    delayMs?: number;
+    direction?: "up" | "left" | "right" | "none";
+  };
 
 function usePrefersReducedMotion() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -29,7 +30,7 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion;
 }
 
-const Reveal = forwardRef<HTMLElement, RevealProps>(
+const Reveal = forwardRef<HTMLElement, any>(
   (
     {
       as: Component = "div",
@@ -40,7 +41,7 @@ const Reveal = forwardRef<HTMLElement, RevealProps>(
       style,
       ...rest
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const internalRef = useRef<HTMLElement | null>(null);
     const ref = (forwardedRef as React.RefObject<HTMLElement>) || internalRef;
@@ -65,7 +66,7 @@ const Reveal = forwardRef<HTMLElement, RevealProps>(
             observer.disconnect();
           }
         },
-        { threshold: 0.5, rootMargin: "0px 0px -25% 0px" }
+        { threshold: 0.5, rootMargin: "0px 0px -25% 0px" },
       );
 
       observer.observe(node);
@@ -91,7 +92,7 @@ const Reveal = forwardRef<HTMLElement, RevealProps>(
         {children}
       </Component>
     );
-  }
+  },
 );
 
 Reveal.displayName = "Reveal";
