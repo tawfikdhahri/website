@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react";
 
 type RevealProps = React.HTMLAttributes<HTMLElement> & {
   as?: keyof JSX.IntrinsicElements;
@@ -29,62 +29,71 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion;
 }
 
-export default function Reveal({
-  as = "div",
-  className,
-  children,
-  delayMs,
-  direction = "up",
-  style,
-  ...rest
-}: RevealProps) {
-  const Component = as;
-  const ref = useRef<HTMLElement | null>(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const [isVisible, setIsVisible] = useState(false);
+const Reveal = forwardRef<HTMLElement, RevealProps>(
+  (
+    {
+      as: Component = "div",
+      className,
+      children,
+      delayMs,
+      direction = "up",
+      style,
+      ...rest
+    },
+    forwardedRef
+  ) => {
+    const internalRef = useRef<HTMLElement | null>(null);
+    const ref = (forwardedRef as React.RefObject<HTMLElement>) || internalRef;
+    const prefersReducedMotion = usePrefersReducedMotion();
+    const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
-    }
+    useEffect(() => {
+      if (prefersReducedMotion) {
+        setIsVisible(true);
+        return;
+      }
 
-    const node = ref.current;
-    if (!node) {
-      return;
-    }
+      const node = ref.current;
+      if (!node) {
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.5, rootMargin: "0px 0px -25% 0px" }
+      );
+
+      observer.observe(node);
+      return () => observer.disconnect();
+    }, [prefersReducedMotion]);
+
+    const classes = ["reveal", isVisible && "reveal--visible", className]
+      .filter(Boolean)
+      .join(" ");
+    const mergedStyle = {
+      ...style,
+      ...(delayMs !== undefined ? { "--reveal-delay": `${delayMs}ms` } : {}),
+    } as React.CSSProperties;
+
+    return (
+      <Component
+        ref={ref}
+        className={classes}
+        data-reveal-direction={direction}
+        style={mergedStyle}
+        {...rest}
+      >
+        {children}
+      </Component>
     );
+  }
+);
 
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [prefersReducedMotion]);
+Reveal.displayName = "Reveal";
 
-  const classes = ["reveal", isVisible && "reveal--visible", className]
-    .filter(Boolean)
-    .join(" ");
-  const mergedStyle = {
-    ...style,
-    ...(delayMs !== undefined ? { "--reveal-delay": `${delayMs}ms` } : {})
-  } as React.CSSProperties;
-
-  return (
-    <Component
-      ref={ref}
-      className={classes}
-      data-reveal-direction={direction}
-      style={mergedStyle}
-      {...rest}
-    >
-      {children}
-    </Component>
-  );
-}
+export default Reveal;

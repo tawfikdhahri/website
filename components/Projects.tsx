@@ -1,8 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
-import FeaturedProjectsSlider from "./FeaturedProjectsSlider";
 import ProjectCard, { type ProjectCardData } from "./ProjectCard";
 import cv from "@/data/cv.json";
 import widgets from "@/data/widgets.json";
@@ -35,7 +33,7 @@ const toProjectCardData = (project: Project): ProjectCardData => {
     title: project.title,
     description: project.description,
     tags: project.tags,
-    imageSrc: project.image ?? "/projects/project-placeholder.svg",
+    imageSrc: project.image ?? "/projects/new-placeholder.svg",
     href: `/projects/${slug}`,
   };
 };
@@ -44,95 +42,81 @@ const toWidgetCardData = (widget: Widget): ProjectCardData => ({
   title: widget.title,
   description: widget.description,
   tags: widget.tags,
-  imageSrc: widget.image ?? "/projects/project-placeholder.svg",
+  imageSrc: widget.image ?? "/projects/new-placeholder.svg",
   href: `/widgets/${widget.slug}`,
   ctaLabel: "View details",
   ctaVariant: "button",
 });
 
 export default function Projects() {
-  const [showAllOthers, setShowAllOthers] = useState(false);
+  const allProjects = useMemo(() => {
+    const regiondoProjects = (cv.projects?.Regiondo as Project[]).map(
+      toProjectCardData
+    );
+    const halalkoomProjects = (cv.projects?.Halalkoom as Project[]).map(
+      toProjectCardData
+    );
+    const otherProjects = (cv.projects?.Others as Project[]).map(
+      toProjectCardData
+    );
+    const widgetCards = (widgets as Widget[]).map(toWidgetCardData);
+    return [
+      ...widgetCards,
+      ...regiondoProjects,
+      ...halalkoomProjects,
+      ...otherProjects,
+    ];
+  }, []);
 
-  // Pre-classified projects
-  const regiondoProjects = (cv.projects?.Regiondo as Project[]).map(
-    toProjectCardData
-  );
-  const halalkoomProjects = (cv.projects?.Halalkoom as Project[]).map(
-    toProjectCardData
-  );
-  const otherProjects = (cv.projects?.Others as Project[]).map(
-    toProjectCardData
-  );
+  const filteredProjects = allProjects;
 
-  const widgetCards = (widgets as Widget[]).map(toWidgetCardData);
+  const [visibleProjects, setVisibleProjects] = useState(6);
 
-  // Slice for show more
-  const displayedOtherProjects = showAllOthers ? otherProjects : [];
+  const handleShowMore = () => {
+    setVisibleProjects((prev) => prev + 6);
+  };
 
   return (
     <section id="projects" className="py-20">
-      <Reveal className="mx-auto w-full max-w-6xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-6">
         <SectionHeading
           eyebrow="Projects"
           title="Selected projects across web and mobile."
           description="A curated set of projects delivered for marketplaces, operations, and consumer apps."
         />
 
-        {/* Regiondo Widgets Grid */}
-        {widgetCards.length > 0 && (
-          <section className="mt-10">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-mutedText">
-                Regiondo Widgets
-              </h3>
-            </div>
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
-              {widgetCards.map((project) => (
-                <ProjectCard key={project.title} project={project} />
-              ))}
-            </div>
-          </section>
-        )}
+        {/* Projects Grid */}
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.slice(0, visibleProjects).map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
 
-        {/* Featured Regiondo Projects Slider */}
-        {regiondoProjects.length > 0 && (
-          <FeaturedProjectsSlider projects={regiondoProjects} />
+        {visibleProjects < filteredProjects.length && (
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={handleShowMore}
+              className="group flex items-center justify-center rounded-full bg-primaryAccent p-3 text-white shadow-md transition-all duration-300 ease-out hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primaryAccent"
+              aria-label="Show more projects"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 animate-bounce"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </button>
+          </div>
         )}
-
-        {/* Halalkoom Projects Grid */}
-        {halalkoomProjects.length > 0 && (
-          <section className="mt-10">
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
-              {halalkoomProjects.map((project) => (
-                <ProjectCard key={project.title} project={project} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Other Projects Grid */}
-        {otherProjects.length > 0 && (
-          <section className="mt-10">
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
-              {displayedOtherProjects.map((project) => (
-                <ProjectCard key={project.title} project={project} />
-              ))}
-            </div>
-
-            {/* Show More / Show Less */}
-            {otherProjects.length > 3 && (
-              <div className="mt-6 text-center">
-                <button
-                  className="px-6 py-2 font-semibold text-white bg-primary rounded hover:bg-primary-dark transition"
-                  onClick={() => setShowAllOthers(!showAllOthers)}
-                >
-                  {showAllOthers ? "Show Less" : "Show More"}
-                </button>
-              </div>
-            )}
-          </section>
-        )}
-      </Reveal>
+      </div>
     </section>
   );
 }

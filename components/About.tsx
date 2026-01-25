@@ -1,5 +1,4 @@
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
 import cv from "@/data/cv.json";
 
 const aboutIconMap: Record<string, string> = {
@@ -15,7 +14,7 @@ const getIconColorClass = (index: number) =>
 export default function About() {
   return (
     <section id="about" className="bg-background py-20">
-      <Reveal className="mx-auto w-full max-w-6xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-6">
         <SectionHeading
           eyebrow="About"
           title="Full-stack delivery with a product mindset."
@@ -42,7 +41,7 @@ export default function About() {
             </div>
           ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

@@ -14,21 +14,8 @@ type WidgetDetailsPageProps = {
   };
 };
 
-type WidgetData = {
-  slug: string;
-  title: string;
-  description: string;
-  image?: string;
-  element: string;
-  widgetId: string;
-  scriptSrc: string;
-  tags: string[];
-  techStack: string[];
-  layout?: "full";
-};
-
 export default function WidgetDetailsPage({ params }: WidgetDetailsPageProps) {
-  const widget = (widgets as WidgetData[]).find(
+  const widget = (widgets as Widget[]).find(
     (entry) => entry.slug === params.slug
   );
 

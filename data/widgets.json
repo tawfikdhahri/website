@@ -15,7 +15,7 @@
     "slug": "catalog-widget",
     "title": "Catalog Widget",
     "description": "Embed a curated product catalog with filters, pricing, and availability to drive conversions from content pages.",
-    "image": "/projects/project-placeholder.svg",
+    "image": "/projects/catalog-widget.png",
     "element": "product-catalog-widget",
     "widgetId": "f2502ab7-39a6-4dcd-ad72-1d7688e645c6",
     "scriptSrc": "https://widgets.dev.regiondo.net/catalog/v1/catalog-widget.min.js",

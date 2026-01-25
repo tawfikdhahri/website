@@ -5,11 +5,11 @@
   "contact": {
     "phone": ["(+216) 26-322-944", "(+216) 50-587-111"],
     "email": "taoufik.fst.dhahri@gmail.com",
-    "github": "tawfikdhahri",
-    "linkedin": "/taoufik-dhahri-222593152/"
+    "github": "https://github.com/tawfikdhahri",
+    "linkedin": "https://www.linkedin.com/in/taoufik-dhahri-222593152/"
   },
-  "heroSummary": "Full-stack engineer with 5+ years of experience building web and mobile applications with TypeScript, React, and Node.js.",
-  "aboutSummary": "Full-stack engineer focused on scalable web and mobile products. Experienced in TypeScript monorepos, micro-frontends, and microservices, with hands-on delivery across UI, state management, and backend services. Comfortable owning end-to-end features, from architecture and testing to deployment and content workflows.",
+  "aboutSummary": "I’m a full-stack engineer who loves building web and mobile apps that scale. I work with TypeScript, micro-frontends, and microservices, and I handle everything a feature needs—from what users see, to the app’s logic, backend, testing, and deployment. I also enjoy adding AI-powered tools and automation to make apps smarter and easier to use",
+  "heroSummary": "Full-stack engineer building scalable web and mobile apps with AI-powered features",
   "aboutCards": [
     {
       "title": "Product-driven full-stack delivery",
@@ -194,13 +194,11 @@
       {
         "title": "Halalkoom Dashboard",
         "description": "Food delivery dashboard for restaurant owners to manage their orders and deliveries.",
-        "image": "/projects/restaurant-app.jpg",
         "tags": ["React js", "GraphQL", "Node.js", "Bootstrap"]
       },
       {
         "title": "Halalkoom Admin Dashboard",
         "description": "Food delivery admin dashboard to manage restaurants, drivers, and orders.",
-        "image": "/projects/restaurant-app.jpg",
         "tags": ["React js", "GraphQL", "Node.js", "Bootstrap"]
       }
     ],
@@ -244,6 +242,19 @@
   },
 
   "skills": [
+    {
+      "category": "AI / IA / Analytics",
+      "items": [
+        "LLMs",
+        "RAG (Retrieval-Augmented Generation)",
+        "Embedding",
+        "Prompt Engineering",
+        "Vector Databases",
+        "Matomo Analytics Integration",
+        "Google analytics",
+        "Google tag manager"
+      ]
+    },
     {
       "category": "Frontend",
       "items": [

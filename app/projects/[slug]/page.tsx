@@ -24,9 +24,9 @@ export default function ProjectDetailsPage({
 }: ProjectDetailsPageProps) {
   // Flatten all projects across companies
   const allProjects = [
-    ...(cv.projects?.Regiondo || []),
-    ...(cv.projects?.Halalkoom || []),
-    ...(cv.projects?.Others || []),
+    ...((cv.projects?.Regiondo || []) as Project[]),
+    ...((cv.projects?.Halalkoom || []) as Project[]),
+    ...((cv.projects?.Others || []) as Project[]),
   ];
 
   const project = allProjects.find(

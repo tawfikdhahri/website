@@ -23,6 +23,28 @@ declare global {
       };
     }
   }
+
+  type Project = {
+    title: string;
+    description: string;
+    tags: string[];
+    image?: string;
+    demoWidgetId?: string;
+  };
+
+  type Widget = {
+    slug: string;
+    title: string;
+    description: string;
+    image?: string;
+    tags: string[];
+    techStack: string[];
+    element: string;
+    widgetId: string;
+    scriptSrc: string;
+    layout?: string;
+  };
 }
 
 export {};
+
