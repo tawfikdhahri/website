@@ -183,62 +183,18 @@
         "title": "Halalkoom Customer App",
         "description": "Food delivery solution with customer, driver, and restaurant apps.",
         "image": "/projects/customer-app.jpg",
-        "tags": ["React Native", "GraphQL", "Push Notifications", "Maps"]
+        "tags": ["React Native", "GraphQL", "Push Notifications", "Maps"],
+        "liveDemoUrl": "https://apkpure.com/halalkoom/com.halalkoom.customer"
       },
       {
         "title": "Halalkoom Driver App",
         "description": "Food delivery solution with customer, driver, and restaurant apps.",
         "image": "/projects/driver-app.jpg",
-        "tags": ["React Native", "GraphQL", "Push Notifications", "Maps"]
-      },
-      {
-        "title": "Halalkoom Dashboard",
-        "description": "Food delivery dashboard for restaurant owners to manage their orders and deliveries.",
-        "tags": ["React js", "GraphQL", "Node.js", "Bootstrap"]
-      },
-      {
-        "title": "Halalkoom Admin Dashboard",
-        "description": "Food delivery admin dashboard to manage restaurants, drivers, and orders.",
-        "tags": ["React js", "GraphQL", "Node.js", "Bootstrap"]
+        "tags": ["React Native", "GraphQL", "Push Notifications", "Maps"],
+        "liveDemoUrl": "https://apkpure.com/halalkoom-livreur/com.halalkoom.driver"
       }
     ],
-    "Others": [
-      {
-        "title": "Apri Trade",
-        "description": "Mobile image upload app with admin approval workflow.",
-        "tags": ["React Native", "Mobile", "Workflow"]
-      },
-      {
-        "title": "Uplink",
-        "description": "Mobile and web platform for managing insurance processes and employee services.",
-        "tags": ["React", "React Native Web", "GraphQL"]
-      },
-      {
-        "title": "Atomic Retail",
-        "description": "Web tool for personalized promotions and digital ticket generation.",
-        "tags": ["React", "Web", "Promotions"]
-      },
-      {
-        "title": "FafaPorte",
-        "description": "Mobile app for locksmiths to manage client intervention requests.",
-        "tags": ["React Native", "Mobile", "Operations"]
-      },
-      {
-        "title": "Andek",
-        "description": "Mobile ordering platform for restaurant services.",
-        "tags": ["Node.js", "GraphQL", "Mobile"]
-      },
-      {
-        "title": "Diet-Food Delivery",
-        "description": "Subscription-based meal plan delivery app for an Emirati restaurant.",
-        "tags": ["React Native", "Node.js", "Subscriptions"]
-      },
-      {
-        "title": "Expeeria",
-        "description": "Doctor appointment app with scheduling, matching, and multilingual support.",
-        "tags": ["React Native", "Node.js", "Healthcare"]
-      }
-    ]
+    "Others": []
   },
 
   "skills": [

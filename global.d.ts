@@ -30,6 +30,7 @@ declare global {
     tags: string[];
     image?: string;
     demoWidgetId?: string;
+    liveDemoUrl?: string;
   };
 
   type Widget = {

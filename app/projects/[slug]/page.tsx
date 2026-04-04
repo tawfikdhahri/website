@@ -84,6 +84,25 @@ export default function ProjectDetailsPage({
             </div>
           </section>
 
+          {/* Live demo (external link, e.g. store listing) */}
+          {project.liveDemoUrl && (
+            <section className="mt-6 rounded-3xl border border-border bg-background p-6 shadow-sm">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-mutedText">
+                Live demo
+              </h3>
+              <p className="mt-4">
+                <a
+                  href={project.liveDemoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primaryDark underline underline-offset-4 transition duration-200 ease-out hover:text-primaryAccent"
+                >
+                  Download app
+                </a>
+              </p>
+            </section>
+          )}
+
           {/* Demo Link (only for Regiondo widgets/projects) */}
           {project.demoWidgetId && (
             <section className="rounded-3xl border border-border bg-background p-6 shadow-sm mt-6">

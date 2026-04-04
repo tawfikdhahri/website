@@ -45,14 +45,14 @@ export default function Hero() {
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <a
-              href="#projects"
+              href="/#projects"
               className="rounded-full bg-primaryAccent px-6 py-3 text-sm font-semibold text-white shadow-md transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-primaryAccent/90 hover:shadow-lg"
             >
               View projects
             </a>
 
             <a
-              href="#contact"
+              href="/#contact"
               className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition duration-200 ease-out hover:-translate-y-0.5 hover:border-white hover:bg-white/10"
             >
               Get in touch

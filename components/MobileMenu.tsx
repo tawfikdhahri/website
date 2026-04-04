@@ -68,7 +68,7 @@ export default function MobileMenu({
         <div className="mt-auto border-t border-border px-6 py-5 bg-background">
           <ToggleTheme />
           <a
-            href="#contact"
+            href="/#contact"
             onClick={onClose}
             className="inline-flex w-full items-center justify-center rounded-full border border-border px-4 py-3 text-xs font-semibold uppercase tracking-widest text-primaryDark transition duration-200 ease-out hover:border-primaryAccent hover:text-primaryAccent hover:shadow-sm"
           >

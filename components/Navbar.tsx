@@ -6,11 +6,11 @@ import MobileMenu from "@/components/MobileMenu";
 import ToggleTheme from "@/components/ToggleTheme";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -20,7 +20,7 @@ export default function Navbar() {
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background shadow-md backdrop-blur supports-[backdrop-filter]:bg-background">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <a
-          href="#home"
+          href="/#home"
           className="inline-flex text-sm font-semibold tracking-wide text-primaryDark transition duration-200 ease-out hover:-translate-y-0.5 hover:text-primaryAccent"
         >
           {cv.name}
@@ -44,7 +44,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <ToggleTheme />
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden rounded-full border border-border px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primaryDark transition duration-200 ease-out hover:-translate-y-0.5 hover:border-primaryAccent hover:text-primaryAccent hover:shadow-sm sm:inline-flex"
           >
             Let&apos;s talk
