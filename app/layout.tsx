@@ -8,12 +8,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Designer & Developer",
+  title: "Taoufik Dhahri — Software Engineer",
   description:
     "Personal website featuring projects, articles, and ways to get in touch.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://tawfikdhahri.com"),
   openGraph: {
-    title: "Your Name — Designer & Developer",
+    title: "Taoufik Dhahri — Software Engineer",
     description:
       "Personal website featuring projects, articles, and ways to get in touch.",
     type: "website",
